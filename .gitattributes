@@ -1,0 +1,8 @@
+* text eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.java text
+*.groovy text
+*.md text
+gradlew text
+
