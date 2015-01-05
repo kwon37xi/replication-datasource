@@ -30,10 +30,12 @@ List loggers = [
 dependencies {
     testCompile loggers
     testCompile 'junit:junit:4.11'
+    testCompile 'org.assertj:assertj-core:1.7.1'
     testCompile "org.springframework:spring-context:${springVersion}"
     testCompile "org.springframework:spring-orm:${springVersion}"
     testCompile "org.springframework:spring-jdbc:${springVersion}"
     testCompile "org.springframework:spring-tx:${springVersion}"
+    testCompile "org.springframework:spring-test:${springVersion}"
     testCompile "org.hibernate:hibernate-entitymanager:${hibernateVersion}"
     testCompile "com.h2database:h2:${h2Version}"
 }

@@ -1,7 +1,9 @@
 package kr.pe.kwonnam.lazyreplicationdatasourceproxy.config;
 
+import kr.pe.kwonnam.lazyreplicationdatasourceproxy.jpa.User;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
@@ -16,8 +18,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 @Configuration
-@Import({WithAbstractRoutingDataSourceConfig.class, WithLazyReplicationDataSourceProxyConfig.class})
 @EnableTransactionManagement
+@Import({DataSourceConfig.class, WithAbstractRoutingDataSourceConfig.class, WithLazyReplicationDataSourceProxyConfig.class})
+@ComponentScan(basePackageClasses = User.class)
 public class LazyReplicationDataSourceProxyApplicationConfig {
 
     @Bean
