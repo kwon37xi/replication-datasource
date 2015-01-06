@@ -21,6 +21,49 @@ If you use [Spring framework]() for your application, this is enough for your da
 
 You just need to set `@Transactional(readOnly = true|false)`.
 
+```java
+public class ReplicationRoutingDataSource extends AbstractRoutingDataSource {
+    private Logger log = LoggerFactory.getLogger(ReplicationRoutingDataSource.class);
+
+    @Override
+    protected Object determineCurrentLookupKey() {
+        String dataSourceType = TransactionSynchronizationManager.isCurrentTransactionReadOnly() ? "read" : "write";
+        log.info("current dataSourceType : {}", dataSourceType);
+        return dataSourceType;
+    }
+}
+
+@Bean
+public DataSource writeDataSource() {
+    DataSource writeDataSource = ...;
+    reaturn writeDataSource;
+}
+
+@Bean
+public DataSource readDataSource() {
+    DataSource readDataSource = ...;
+    return readDataSource;
+}
+
+@Bean
+public DataSource routingDataSource(@Qualifier("writeDataSource") DataSource writeDataSource, @Qualifier("readDataSource") DataSource readDataSource) {
+    ReplicationRoutingDataSource routingDataSource = new ReplicationRoutingDataSource();
+
+    Map<Object, Object> dataSourceMap = new HashMap<Object, Object>();
+    dataSourceMap.put("write", writeDataSource);
+    dataSourceMap.put("read", readDataSource);
+    routingDataSource.setTargetDataSources(dataSourceMap);
+    routingDataSource.setDefaultTargetDataSource(writeDataSource);
+
+    return routingDataSource;
+}
+
+@Bean
+public DataSource dataSource(@Qualifier("routingDataSource") DataSource routingDataSource) {
+    return new LazyConnectionDataSourceProxy(routingDataSource);
+}
+```
+
 ## LazyReplicationConnectionDataSourceProxy
 
 I refered to Spring framework's [LazyConnectionDataSourceProxy](https://github.com/spring-projects/spring-framework/blob/master/spring-jdbc/src/main/java/org/springframework/jdbc/datasource/LazyConnectionDataSourceProxy.java) and modified a little for supporting replication
@@ -51,12 +94,26 @@ public DataSource readDataSource() {
 public DataSource dataSource(DataSource writeDataSource, DataSource readDataSource) {
     return new LazyReplicationConnectionDataSourceProxy(writeDataSource, readDataSource);
 }
+
+// in Service class.
+@Transactional(readOnly = true)
+public Object readQuery() {
+    ....
+}
+
+// working with write database
+@Transactional(readOnly = false)
+public void writeExection() {
+    ....
+}
 ```
 
 when you use with spring framework
 ```java
+// in Service class.
+
 // Spring's @Transaction AOP automatically call connection.setReadOnly(true|false).
-// But before Spring 4.1.x JPA does not call setReadOnly method. In this situation you'd better use LazyConnectionDataSourceProxy + AbstractRoutingDataSource.
+// But Spring prior to 4.1.x JPA does not call setReadOnly method. In this situation you'd better use LazyConnectionDataSourceProxy + AbstractRoutingDataSource.
 // working with read database
 @Transactional(readOnly = true)
 public Object readQuery() {
