@@ -62,7 +62,7 @@ public void writeExection() {
 }
 ```
 
-when you use withou spring framwork
+when you use without spring framwork
 ```java
 Connection readConn = dataSource.getConnection();
 readConn.setReadOnly(true);
