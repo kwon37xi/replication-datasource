@@ -23,9 +23,9 @@ to make [LazyReplicationConnectionDataSourceProxy](https://github.com/kwon37xi/r
 
 This has features of LazyConnectionDataSourceProxy and support database replication(master/slave | read/write) routing.
 
-This also does not depend on Spring framework. So you can use this code with any Java application.
-But you have to remember to call connection.setReadOnly(true|false) for replication before executing statements.
-And You cannot reuse the connection for difference readOnly status.
+This also does not depend on Spring framework. So you can use this code with any Java applications.
+But you have to remember to call `connection.setReadOnly(true|false)` for replication before executing statements.
+And You cannot reuse the connection for different readOnly status, you have close and get again another connection for new statement.
 
 ```java
 @Bean
@@ -47,7 +47,7 @@ public DataSource dataSource(DataSource writeDataSource, DataSource readDataSour
 }
 ```
 
-when you use
+when you use with spring framework
 ```java
 // working with read database
 @Transactional(readOnly = true)
@@ -60,4 +60,19 @@ public Object readQuery() {
 public void writeExection() {
     ....
 }
+```
+
+when you use withou spring framwork
+```java
+Connection readConn = dataSource.getConnection();
+readConn.setReadOnly(true);
+
+// ... working with readConn...
+
+readConn.close();
+
+Connection writeConn = dataSource.getConnection();
+writeConn.setReadOnly(false);
+
+// ... working with writeConn...
 ```
