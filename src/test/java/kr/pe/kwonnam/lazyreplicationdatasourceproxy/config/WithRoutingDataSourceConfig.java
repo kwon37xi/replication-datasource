@@ -10,9 +10,8 @@ import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
-//    @Profile("ards")
 @Configuration
-public class WithAbstractRoutingDataSourceConfig {
+public class WithRoutingDataSourceConfig {
     /**
      * {@link org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource}는
      * {@link org.springframework.beans.factory.InitializingBean}을 구현하므로,

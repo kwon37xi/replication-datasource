@@ -19,7 +19,6 @@ ext {
 tasks.withType(Compile) { options.encoding = 'UTF-8' }
 
 List loggers = [
-    "org.slf4j:slf4j-api:${slf4jVersion}",
     "org.slf4j:jcl-over-slf4j:${slf4jVersion}",
     "org.slf4j:log4j-over-slf4j:${slf4jVersion}",
     "org.slf4j:jul-to-slf4j:${slf4jVersion}",
@@ -28,6 +27,7 @@ List loggers = [
 ]
 
 dependencies {
+    compile "org.slf4j:slf4j-api:${slf4jVersion}"
     testCompile loggers
     testCompile 'junit:junit:4.11'
     testCompile 'org.assertj:assertj-core:1.7.1'

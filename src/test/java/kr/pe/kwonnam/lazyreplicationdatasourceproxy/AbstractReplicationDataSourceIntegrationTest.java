@@ -15,9 +15,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = LazyReplicationDataSourceProxyApplicationConfig.class)
-public class ReplicationDataSourceIntegrationTest {
+public abstract class AbstractReplicationDataSourceIntegrationTest {
 
-    private Logger log = LoggerFactory.getLogger(ReplicationDataSourceIntegrationTest.class);
+    private Logger log = LoggerFactory.getLogger(AbstractReplicationDataSourceIntegrationTest.class);
 
     @Autowired
     private UserOuterService userOuterService;

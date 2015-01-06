@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-@Import({DataSourceConfig.class, WithAbstractRoutingDataSourceConfig.class, WithLazyReplicationDataSourceProxyConfig.class})
+@Import({DataSourceConfig.class})
 @ComponentScan(basePackageClasses = User.class)
 public class LazyReplicationDataSourceProxyApplicationConfig {
 
