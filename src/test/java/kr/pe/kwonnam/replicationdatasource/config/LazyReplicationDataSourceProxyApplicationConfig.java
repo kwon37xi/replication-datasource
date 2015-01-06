@@ -1,6 +1,6 @@
-package kr.pe.kwonnam.lazyreplicationdatasourceproxy.config;
+package kr.pe.kwonnam.replicationdatasource.config;
 
-import kr.pe.kwonnam.lazyreplicationdatasourceproxy.jpa.User;
+import kr.pe.kwonnam.replicationdatasource.jpa.User;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

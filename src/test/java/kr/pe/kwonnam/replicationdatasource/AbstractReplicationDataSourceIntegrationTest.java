@@ -1,8 +1,8 @@
-package kr.pe.kwonnam.lazyreplicationdatasourceproxy;
+package kr.pe.kwonnam.replicationdatasource;
 
-import kr.pe.kwonnam.lazyreplicationdatasourceproxy.config.LazyReplicationDataSourceProxyApplicationConfig;
-import kr.pe.kwonnam.lazyreplicationdatasourceproxy.jpa.User;
-import kr.pe.kwonnam.lazyreplicationdatasourceproxy.jpa.UserOuterService;
+import kr.pe.kwonnam.replicationdatasource.config.LazyReplicationDataSourceProxyApplicationConfig;
+import kr.pe.kwonnam.replicationdatasource.jpa.User;
+import kr.pe.kwonnam.replicationdatasource.jpa.UserOuterService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;

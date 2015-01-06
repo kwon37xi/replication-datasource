@@ -1,4 +1,4 @@
-package kr.pe.kwonnam.lazyreplicationdatasourceproxy.config;
+package kr.pe.kwonnam.replicationdatasource.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

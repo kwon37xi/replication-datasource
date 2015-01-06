@@ -1,4 +1,4 @@
-package kr.pe.kwonnam.lazyreplicationdatasourceproxy.jpa;
+package kr.pe.kwonnam.replicationdatasource.jpa;
 
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package kr.pe.kwonnam.lazyreplicationdatasourceproxy.routingdatasource;
+package kr.pe.kwonnam.replicationdatasource.routingdatasource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
