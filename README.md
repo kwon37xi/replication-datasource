@@ -7,6 +7,9 @@ There are two ways of implementing replication datasources in Java environment.
 
 I introduce two ways the first one is only for Spring framework and the second one is for general java applications.
 
+You can test these two ways with [ReplicationRoutingDataSourceIntegrationTest](https://github.com/kwon37xi/replication-datasource/blob/master/src/test/java/kr/pe/kwonnam/replicationdatasource/ReplicationRoutingDataSourceIntegrationTest.java)
+and [ReplicationLazyConnectionDataSourceProxyIntegrationTest](https://github.com/kwon37xi/replication-datasource/blob/master/src/test/java/kr/pe/kwonnam/replicationdatasource/ReplicationLazyConnectionDataSourceProxyIntegrationTest.java).
+
 ## Spring's LazyConnectionDataSourceProxy + AbstractRoutingDataSource
 
 Refer to [ReplicationRoutingDataSource](https://github.com/kwon37xi/replication-datasource/blob/master/src/test/java/kr/pe/kwonnam/replicationdatasource/routingdatasource/ReplicationRoutingDataSource.java) and [LazyReplicationDataSourceProxyApplicationConfig](https://github.com/kwon37xi/replication-datasource/blob/master/src/test/java/kr/pe/kwonnam/replicationdatasource/config/LazyReplicationDataSourceProxyApplicationConfig.java).
