@@ -1,11 +1,11 @@
 # Java (Spring & Non Spring) replication-datasource
 
-Lazy Replication(master/slave - write/read split) Connection DataSource(Connection Pool) Proxy([LazyReplicationConnectionDataSourceProxy](https://github.com/kwon37xi/replication-datasource/blob/master/src/main/java/kr/pe/kwonnam/rezyreplicationdatasourceproxy/LazyReplicationConnectionDataSourceProxy.java))
-is copy & modify of Spring framework's [LazyConnectionDataSourceProxy](https://github.com/spring-projects/spring-framework/blob/master/spring-jdbc/src/main/java/org/springframework/jdbc/datasource/LazyConnectionDataSourceProxy.java).
+When you need database replication, you have to route read/write connections to appropriate databses.
 
-This DataSource suports replication(master/slave | write/read) database connection and also lazy proxy means the connection is not acquired until real DB job is executed.
+There are two ways of implementing replication datasources in Java environment.
+(actually four Database Proxy server like [MySQL Proxy](http://dev.mysql.com/doc/mysql-proxy/en/) or [MaxScale](https://github.com/mariadb-corporation/MaxScale) and [MySql Replication JDBC Driver](http://dev.mysql.com/doc/connector-j/en/connector-j-master-slave-replication-connection.html)).
 
-There are two ways of implementing replication datasources.
+I introduce two ways the first one is only for Spring framework and the second one is for general java applications.
 
 ## Spring's LazyConnectionDataSourceProxy + AbstractRoutingDataSource
 
