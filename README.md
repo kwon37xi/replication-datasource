@@ -14,12 +14,18 @@ You can make replication data source with only spring framework's two basic clas
 
 This works very nicely with Spring's [TransactionSynchronizationManager](http://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/transaction/support/TransactionSynchronizationManager.html).
 
+If you use [Spring framework]() for your application, this is enough for your database replication.
+
 ## LazyReplicationConnectionDataSourceProxy
 
 I refered to Spring framework's [LazyConnectionDataSourceProxy](https://github.com/spring-projects/spring-framework/blob/master/spring-jdbc/src/main/java/org/springframework/jdbc/datasource/LazyConnectionDataSourceProxy.java) and modified a little for supporting replication
 to make [LazyReplicationConnectionDataSourceProxy](https://github.com/kwon37xi/replication-datasource/blob/master/src/main/java/kr/pe/kwonnam/rezyreplicationdatasourceproxy/LazyReplicationConnectionDataSourceProxy.java).
 
 This has features of LazyConnectionDataSourceProxy and support database replication(master/slave | read/write) routing.
+
+This also does not depend on Spring framework. So you can use this code with any Java application.
+But you have to remember to call connection.setReadOnly(true|false) for replication before executing statements.
+And You cannot reuse the connection for difference readOnly status.
 
 ```java
 @Bean
