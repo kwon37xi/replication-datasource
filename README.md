@@ -69,7 +69,7 @@ This has features of LazyConnectionDataSourceProxy and support database replicat
 
 This also does not depend on Spring framework. So you can use this code with any Java applications.
 But you have to remember to call `connection.setReadOnly(true|false)` for replication before executing statements.
-And You cannot reuse the connection for different readOnly status, you have to close and get again another connection for new jdbc statement.
+And You cannot reuse the connection for different readOnly status, you have to close and get again another connection for a new jdbc statement.
 
 ```java
 @Bean
