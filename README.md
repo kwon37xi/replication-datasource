@@ -23,6 +23,8 @@ You just need to set `@Transactional(readOnly = true|false)`.
 I refered to Spring framework's [LazyConnectionDataSourceProxy](https://github.com/spring-projects/spring-framework/blob/master/spring-jdbc/src/main/java/org/springframework/jdbc/datasource/LazyConnectionDataSourceProxy.java) and modified a little for supporting replication
 to make [LazyReplicationConnectionDataSourceProxy](https://github.com/kwon37xi/replication-datasource/blob/master/src/main/java/kr/pe/kwonnam/rezyreplicationdatasourceproxy/LazyReplicationConnectionDataSourceProxy.java).
 
+It's enough to copy & paste [LazyReplicationConnectionDataSourceProxy](https://github.com/kwon37xi/replication-datasource/blob/master/src/main/java/kr/pe/kwonnam/rezyreplicationdatasourceproxy/LazyReplicationConnectionDataSourceProxy.java) to make replication datasource.
+
 This has features of LazyConnectionDataSourceProxy and support database replication(master/slave | read/write) routing.
 
 This also does not depend on Spring framework. So you can use this code with any Java applications.
@@ -42,7 +44,6 @@ public DataSource readDataSource() {
     return readDataSource;
 }
 
-
 @Bean
 public DataSource dataSource(DataSource writeDataSource, DataSource readDataSource) {
     return new LazyReplicationConnectionDataSourceProxy(writeDataSource, readDataSource);
@@ -51,6 +52,8 @@ public DataSource dataSource(DataSource writeDataSource, DataSource readDataSour
 
 when you use with spring framework
 ```java
+// Spring's @Transaction AOP automatically call connection.setReadOnly(true|false).
+// But before Spring 4.1.x JPA does not call setReadOnly method. In this situation you'd better use LazyConnectionDataSourceProxy + AbstractRoutingDataSource.
 // working with read database
 @Transactional(readOnly = true)
 public Object readQuery() {
