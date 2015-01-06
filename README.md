@@ -23,26 +23,20 @@ You just need to set `@Transactional(readOnly = true|false)`.
 
 ```java
 public class ReplicationRoutingDataSource extends AbstractRoutingDataSource {
-    private Logger log = LoggerFactory.getLogger(ReplicationRoutingDataSource.class);
-
     @Override
     protected Object determineCurrentLookupKey() {
-        String dataSourceType = TransactionSynchronizationManager.isCurrentTransactionReadOnly() ? "read" : "write";
-        log.info("current dataSourceType : {}", dataSourceType);
-        return dataSourceType;
+        return TransactionSynchronizationManager.isCurrentTransactionReadOnly() ? "read" : "write";
     }
 }
 
 @Bean
 public DataSource writeDataSource() {
-    DataSource writeDataSource = ...;
-    reaturn writeDataSource;
+    ...
 }
 
 @Bean
 public DataSource readDataSource() {
-    DataSource readDataSource = ...;
-    return readDataSource;
+    ...
 }
 
 @Bean
@@ -80,14 +74,12 @@ And You cannot reuse the connection for different readOnly status, you have clos
 ```java
 @Bean
 public DataSource writeDataSource() {
-    DataSource writeDataSource = ...;
-    reaturn writeDataSource;
+    ...
 }
 
 @Bean
 public DataSource readDataSource() {
-    DataSource readDataSource = ...;
-    return readDataSource;
+    ...
 }
 
 @Bean
