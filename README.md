@@ -1,9 +1,9 @@
 # Java (Spring & Non Spring) replication-datasource
 
-When you need database replication, you have to route read/write connections to appropriate databses.
+When you need database replication, you have to route read/write connections to appropriate databases.
 
 There are two ways of implementing replication datasources in Java environment.
-(actually four Database Proxy server like [MySQL Proxy](http://dev.mysql.com/doc/mysql-proxy/en/) or [MaxScale](https://github.com/mariadb-corporation/MaxScale) and [MySql Replication JDBC Driver](http://dev.mysql.com/doc/connector-j/en/connector-j-master-slave-replication-connection.html)).
+(actually there are at least two more ways, Database Proxy server like [MySQL Proxy](http://dev.mysql.com/doc/mysql-proxy/en/) or [MaxScale](https://github.com/mariadb-corporation/MaxScale) and [MySql Replication JDBC Driver](http://dev.mysql.com/doc/connector-j/en/connector-j-master-slave-replication-connection.html)).
 
 I introduce two ways the first one is only for Spring framework and the second one is for general java applications.
 
