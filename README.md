@@ -16,6 +16,8 @@ This works very nicely with Spring's [TransactionSynchronizationManager](http://
 
 If you use [Spring framework]() for your application, this is enough for your database replication.
 
+You just need to set `@Transactional(readOnly = true|false)`.
+
 ## LazyReplicationConnectionDataSourceProxy
 
 I refered to Spring framework's [LazyConnectionDataSourceProxy](https://github.com/spring-projects/spring-framework/blob/master/spring-jdbc/src/main/java/org/springframework/jdbc/datasource/LazyConnectionDataSourceProxy.java) and modified a little for supporting replication
