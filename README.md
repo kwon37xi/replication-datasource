@@ -40,7 +40,9 @@ public DataSource readDataSource() {
 }
 
 @Bean
-public DataSource routingDataSource(@Qualifier("writeDataSource") DataSource writeDataSource, @Qualifier("readDataSource") DataSource readDataSource) {
+public DataSource routingDataSource(
+    @Qualifier("writeDataSource") DataSource writeDataSource,
+    @Qualifier("readDataSource") DataSource readDataSource) {
     ReplicationRoutingDataSource routingDataSource = new ReplicationRoutingDataSource();
 
     Map<Object, Object> dataSourceMap = new HashMap<Object, Object>();
@@ -107,7 +109,8 @@ when you use with spring framework
 // in Service class.
 
 // Spring's @Transaction AOP automatically call connection.setReadOnly(true|false).
-// But Spring prior to 4.1.x JPA does not call setReadOnly method. In this situation you'd better use LazyConnectionDataSourceProxy + AbstractRoutingDataSource.
+// But Spring prior to 4.1.x JPA does not call setReadOnly method.
+ // In this situation you'd better use LazyConnectionDataSourceProxy + AbstractRoutingDataSource.
 // working with read database
 @Transactional(readOnly = true)
 public Object readQuery() {
