@@ -137,4 +137,6 @@ Connection writeConn = dataSource.getConnection();
 writeConn.setReadOnly(false);
 
 // ... working with writeConn...
+
+writeConn.close();
 ```
