@@ -56,6 +56,20 @@ public DataSource routingDataSource(@Qualifier("writeDataSource") DataSource wri
 public DataSource dataSource(@Qualifier("routingDataSource") DataSource routingDataSource) {
     return new LazyConnectionDataSourceProxy(routingDataSource);
 }
+
+// in Service class.
+
+// working with read database
+@Transactional(readOnly = true)
+public Object readQuery() {
+    ....
+}
+
+// working with write database
+@Transactional(readOnly = false)
+public void writeExection() {
+    ....
+}
 ```
 
 ## LazyReplicationConnectionDataSourceProxy
@@ -85,18 +99,6 @@ public DataSource readDataSource() {
 @Bean
 public DataSource dataSource(DataSource writeDataSource, DataSource readDataSource) {
     return new LazyReplicationConnectionDataSourceProxy(writeDataSource, readDataSource);
-}
-
-// in Service class.
-@Transactional(readOnly = true)
-public Object readQuery() {
-    ....
-}
-
-// working with write database
-@Transactional(readOnly = false)
-public void writeExection() {
-    ....
 }
 ```
 
