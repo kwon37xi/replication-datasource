@@ -21,7 +21,7 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 @Import({DataSourceConfig.class})
 @ComponentScan(basePackageClasses = User.class)
-public class LazyReplicationDataSourceProxyApplicationConfig {
+public class ReplicationDataSourceApplicationConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(@Qualifier("dataSource") DataSource dataSource) {

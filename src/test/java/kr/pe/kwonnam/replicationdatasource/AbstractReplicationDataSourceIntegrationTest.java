@@ -1,6 +1,6 @@
 package kr.pe.kwonnam.replicationdatasource;
 
-import kr.pe.kwonnam.replicationdatasource.config.LazyReplicationDataSourceProxyApplicationConfig;
+import kr.pe.kwonnam.replicationdatasource.config.ReplicationDataSourceApplicationConfig;
 import kr.pe.kwonnam.replicationdatasource.jpa.User;
 import kr.pe.kwonnam.replicationdatasource.jpa.UserOuterService;
 import org.junit.Test;
@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = LazyReplicationDataSourceProxyApplicationConfig.class)
+@ContextConfiguration(classes = ReplicationDataSourceApplicationConfig.class)
 public abstract class AbstractReplicationDataSourceIntegrationTest {
 
     private Logger log = LoggerFactory.getLogger(AbstractReplicationDataSourceIntegrationTest.class);
