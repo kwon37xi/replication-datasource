@@ -50,3 +50,12 @@ configurations {
         configuration.exclude group: 'org.slf4j', module: 'slf4j-jdk14'
     }
 }
+
+test {
+    ignoreFailures = true
+    testLogging {
+        events "started", "passed", "failed"
+        showStandardStreams true
+    }
+    
+}
