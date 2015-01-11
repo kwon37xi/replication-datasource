@@ -8,7 +8,7 @@ There are two ways of implementing replication datasources in Java environment.
 I introduce two pure java ways, the first one is only for Spring framework and the second one is for general java applications.
 
 You can test these two ways with [ReplicationRoutingDataSourceIntegrationTest](https://github.com/kwon37xi/replication-datasource/blob/master/src/test/java/kr/pe/kwonnam/replicationdatasource/ReplicationRoutingDataSourceIntegrationTest.java)
-and [ReplicationLazyConnectionDataSourceProxyIntegrationTest](https://github.com/kwon37xi/replication-datasource/blob/master/src/test/java/kr/pe/kwonnam/replicationdatasource/ReplicationLazyConnectionDataSourceProxyIntegrationTest.java).
+and [LazyReplicationConnectionDataSourceProxySpringIntegrationTest](https://github.com/kwon37xi/replication-datasource/blob/master/src/test/java/kr/pe/kwonnam/replicationdatasource/LazyReplicationConnectionDataSourceProxySpringIntegrationTest.java).
 
 ## Spring's LazyConnectionDataSourceProxy + AbstractRoutingDataSource
 
@@ -17,7 +17,7 @@ You can make replication data source with only spring framework's two basic clas
 
 This works very nicely with Spring's [TransactionSynchronizationManager](http://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/transaction/support/TransactionSynchronizationManager.html).
 
-If you use [Spring framework]() for your application, this is enough for your database replication.
+If you use [Spring framework](http://spring.io/) for your application, this is enough for your database replication.
 
 You just need to set `@Transactional(readOnly = true|false)`.
 
@@ -77,9 +77,9 @@ public void writeExection() {
 ## LazyReplicationConnectionDataSourceProxy
 
 I refered to Spring framework's [LazyConnectionDataSourceProxy](https://github.com/spring-projects/spring-framework/blob/master/spring-jdbc/src/main/java/org/springframework/jdbc/datasource/LazyConnectionDataSourceProxy.java) and modified a little for supporting replication
-to make [LazyReplicationConnectionDataSourceProxy](https://github.com/kwon37xi/replication-datasource/blob/master/src/main/java/kr/pe/kwonnam/rezyreplicationdatasourceproxy/LazyReplicationConnectionDataSourceProxy.java).
+to make [LazyReplicationConnectionDataSourceProxy](https://github.com/kwon37xi/replication-datasource/blob/master/src/main/java/kr/pe/kwonnam/replicationdatasource/LazyReplicationConnectionDataSourceProxy.java).
 
-It's enough to copy & paste [LazyReplicationConnectionDataSourceProxy](https://github.com/kwon37xi/replication-datasource/blob/master/src/main/java/kr/pe/kwonnam/rezyreplicationdatasourceproxy/LazyReplicationConnectionDataSourceProxy.java)
+It's enough to copy & paste [LazyReplicationConnectionDataSourceProxy](https://github.com/kwon37xi/replication-datasource/blob/master/src/main/java/kr/pe/kwonnam/replicationdatasource/LazyReplicationConnectionDataSourceProxy.java)
 to make a replication datasource.
 
 This has features of LazyConnectionDataSourceProxy and support database replication(master/slave | read/write) routing.
