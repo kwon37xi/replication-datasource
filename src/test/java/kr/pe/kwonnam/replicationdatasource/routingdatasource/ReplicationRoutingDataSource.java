@@ -9,7 +9,6 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
  * {@link org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource}와
  * {@link org.springframework.transaction.support.TransactionSynchronizationManager}를 통해
  * Transaction의 readOnly 값에 따라 데이터 소스 분기
- *
  */
 public class ReplicationRoutingDataSource extends AbstractRoutingDataSource {
     private Logger log = LoggerFactory.getLogger(ReplicationRoutingDataSource.class);

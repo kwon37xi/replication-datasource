@@ -11,7 +11,7 @@ import javax.sql.DataSource;
 public class WithLazyReplicationConnectionDataSourceProxyConfig {
 
     @Bean
-    public DataSource dataSource(@Qualifier("writeDataSource") DataSource writeDataSource, @Qualifier("readDataSource")DataSource readDataSource) {
+    public DataSource dataSource(@Qualifier("writeDataSource") DataSource writeDataSource, @Qualifier("readDataSource") DataSource readDataSource) {
         return new LazyReplicationConnectionDataSourceProxy(writeDataSource, readDataSource);
     }
 }

@@ -10,7 +10,7 @@ import javax.sql.DataSource;
 /**
  * 동일한 테이블에 동일한 양의 데이터가 들어있지만 쓰기쪽은 write_x 읽기 쪽은 read_x 라는 형태의 name 컬럼 데이터를
  * 가지도록 조작한 두 개의 데이터 소스를 생성한다.
- *
+ * <p/>
  * 실전 환경에서는 writeDataSource는 Master DB를, readDataSource는 Slave DB를 바라보는 커넥션 풀이어야 한다.
  */
 @Configuration

@@ -3,6 +3,7 @@ package kr.pe.kwonnam.rezyreplicationdatasourceproxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.sql.DataSource;
 import java.io.PrintWriter;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
@@ -10,7 +11,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.sql.Connection;
 import java.sql.SQLException;
-import javax.sql.DataSource;
 
 /**
  * Lazy Master/Slave(Write/Read) Replication DataSource Proxy.
