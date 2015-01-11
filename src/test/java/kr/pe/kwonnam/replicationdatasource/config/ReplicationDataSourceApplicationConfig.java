@@ -19,7 +19,6 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-@Import({DataSourceConfig.class})
 @ComponentScan(basePackageClasses = User.class)
 public class ReplicationDataSourceApplicationConfig {
 

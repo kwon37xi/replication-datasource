@@ -27,6 +27,14 @@ public class LazyReplicationConnectionDataSourceProxy implements DataSource {
     private Boolean defaultAutoCommit;
     private Integer defaultTransactionIsolation;
 
+    /**
+     * Default constructor.
+     * After setting {@link #writeDataSource} and {@link #readDataSource},
+     * You must call {@link #init()} to initialize the configuration.
+     */
+    public LazyReplicationConnectionDataSourceProxy() {
+    }
+
     public LazyReplicationConnectionDataSourceProxy(DataSource writeDataSource, DataSource readDataSource) {
         this.writeDataSource = writeDataSource;
         this.readDataSource = readDataSource;
@@ -50,10 +58,18 @@ public class LazyReplicationConnectionDataSourceProxy implements DataSource {
         }
     }
 
+    public DataSource setWriteDataSource(DataSource writeDataSource) {
+        return this.writeDataSource = writeDataSource;
+    }
+    
     public DataSource getWriteDataSource() {
         return this.writeDataSource;
     }
 
+    public DataSource setReadDataSource(DataSource readDataSource) {
+        return this.readDataSource = readDataSource;
+    }
+    
     public DataSource getReadDataSource() {
         return this.readDataSource;
     }
@@ -66,6 +82,7 @@ public class LazyReplicationConnectionDataSourceProxy implements DataSource {
     @Override
     public void setLogWriter(PrintWriter out) throws SQLException {
         getWriteDataSource().setLogWriter(out);
+        getReadDataSource().setLogWriter(out);
     }
 
     @Override
