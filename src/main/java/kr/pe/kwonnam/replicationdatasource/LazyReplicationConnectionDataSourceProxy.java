@@ -1,4 +1,4 @@
-package kr.pe.kwonnam.rezyreplicationdatasourceproxy;
+package kr.pe.kwonnam.replicationdatasource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -5,7 +5,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 
 /**
- * Replication with {@link kr.pe.kwonnam.rezyreplicationdatasourceproxy.LazyReplicationConnectionDataSourceProxy}.
+ * Replication with {@link LazyReplicationConnectionDataSourceProxy}.
  */
 @ContextConfiguration(classes = {WithLazyReplicationConnectionDataSourceProxyConfig.class})
 @DirtiesContext
