@@ -34,6 +34,4 @@ public class DataSourceConfig {
                 .addScript("classpath:/readdb.sql");
         return builder.build();
     }
-
-
 }

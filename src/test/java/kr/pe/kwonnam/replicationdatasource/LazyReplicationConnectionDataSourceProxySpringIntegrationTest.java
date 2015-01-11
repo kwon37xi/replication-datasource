@@ -9,5 +9,5 @@ import org.springframework.test.context.ContextConfiguration;
  */
 @ContextConfiguration(classes = {WithLazyReplicationConnectionDataSourceProxyConfig.class})
 @DirtiesContext
-public class LazyReplicationConnectionDataSourceProxyIntegrationTest extends AbstractReplicationDataSourceIntegrationTest {
+public class LazyReplicationConnectionDataSourceProxySpringIntegrationTest extends AbstractReplicationDataSourceIntegrationTest {
 }

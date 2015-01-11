@@ -28,8 +28,8 @@ public class LazyReplicationConnectionDataSourceProxy implements DataSource {
     private Integer defaultTransactionIsolation;
 
     public LazyReplicationConnectionDataSourceProxy(DataSource writeDataSource, DataSource readDataSource) {
-        setWriteDataSource(writeDataSource);
-        setReadDataSource(readDataSource);
+        this.writeDataSource = writeDataSource;
+        this.readDataSource = readDataSource;
         init();
     }
 
@@ -50,16 +50,8 @@ public class LazyReplicationConnectionDataSourceProxy implements DataSource {
         }
     }
 
-    public void setWriteDataSource(DataSource writeDataSource) {
-        this.writeDataSource = writeDataSource;
-    }
-
     public DataSource getWriteDataSource() {
         return this.writeDataSource;
-    }
-
-    public void setReadDataSource(DataSource readDataSource) {
-        this.readDataSource = readDataSource;
     }
 
     public DataSource getReadDataSource() {
