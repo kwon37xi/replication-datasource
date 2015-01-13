@@ -14,9 +14,11 @@ import java.sql.SQLException;
 
 /**
  * Lazy Master/Slave(Write/Read) Replication DataSource Proxy.
- * This is copy & fix of Spring framework's LayzyConnectionDataSourceProxy class.
+ * You can route database connection to master or slave with this datasource proxy.
  * <p/>
- * This DataSource's connection can not be reused more than one time.
+ * This is copy &amp; modify of Spring framework's LayzyConnectionDataSourceProxy class.
+ * <p/>
+ * This DataSource's connection can not be reused with different readOnly attributes.
  */
 public class LazyReplicationConnectionDataSourceProxy implements DataSource {
 
