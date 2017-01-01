@@ -1,4 +1,7 @@
 apply plugin: 'java'
+apply plugin: 'pmd'
+apply plugin: 'findbugs'
+apply plugin: 'checkstyle'
 
 repositories {
     mavenCentral()
@@ -16,7 +19,7 @@ ext {
     h2Version = '1.4.184'
     hibernateVersion = '4.3.7.Final'
 }
-tasks.withType(Compile) { options.encoding = 'UTF-8' }
+tasks.withType(JavaCompile) { options.encoding = 'UTF-8' }
 
 List loggers = [
     "org.slf4j:jcl-over-slf4j:${slf4jVersion}",
@@ -58,4 +61,27 @@ test {
         showStandardStreams true
     }
     
+}
+
+tasks.withType(Checkstyle) {
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
+    ignoreFailures = true
+    configFile = file('config/checkstyle/checkstyle.xml') // rule 파일
+}
+
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
+    ignoreFailures = true
+    effort = 'default'
+    reportLevel = 'medium'
+}
+
+pmd {
+    ignoreFailures = true // 위반이 있어도 report만하고 넘어감
 }
