@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: 'pmd'
 apply plugin: 'findbugs'
 apply plugin: 'checkstyle'
+apply plugin: 'jacoco'
 
 repositories {
     mavenCentral()
@@ -84,4 +85,16 @@ tasks.withType(FindBugs) {
 
 pmd {
     ignoreFailures = true // 위반이 있어도 report만하고 넘어감
+}
+
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = "0.7.5.201505241946"
+}
+
+test {
+    jacoco {
+        enabled = true
+    }
 }
