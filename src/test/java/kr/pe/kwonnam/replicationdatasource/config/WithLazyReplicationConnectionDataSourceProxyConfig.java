@@ -38,7 +38,7 @@ public class WithLazyReplicationConnectionDataSourceProxyConfig {
                 .addScript("classpath:/readdb.sql");
         return builder.build();
     }
-    
+
     @Bean
     public DataSource dataSource(@Qualifier("writeDataSource") DataSource writeDataSource, @Qualifier("readDataSource") DataSource readDataSource) {
         return new LazyReplicationConnectionDataSourceProxy(writeDataSource, readDataSource);
