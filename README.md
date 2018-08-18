@@ -10,6 +10,8 @@ I introduce two pure java ways, the first one is only for Spring framework and t
 You can test these two ways with [ReplicationRoutingDataSourceIntegrationTest](https://github.com/kwon37xi/replication-datasource/blob/master/src/test/java/kr/pe/kwonnam/replicationdatasource/ReplicationRoutingDataSourceIntegrationTest.java)
 and [LazyReplicationConnectionDataSourceProxySpringIntegrationTest](https://github.com/kwon37xi/replication-datasource/blob/master/src/test/java/kr/pe/kwonnam/replicationdatasource/LazyReplicationConnectionDataSourceProxySpringIntegrationTest.java).
 
+If you need Spring Boot example, please refer to [kwon37xi/replication-datasource-boot](https://github.com/kwon37xi/replication-datasource-boot)
+
 ## Spring's LazyConnectionDataSourceProxy + AbstractRoutingDataSource
 
 Refer to [ReplicationRoutingDataSource](https://github.com/kwon37xi/replication-datasource/blob/master/src/test/java/kr/pe/kwonnam/replicationdatasource/routingdatasource/ReplicationRoutingDataSource.java) and
